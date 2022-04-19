@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nriera-test-redis
+  labels:
+    username: nriera
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      username: nriera
+      env: test
+  template:
+    metadata:
+      labels:
+        username: nriera
+        env: test
+        app: nriera-test-redis
+    spec:
+      containers:
+        - name: hellos
+          image: redis:6
+          command:
+          volumeMounts:
+          - name: nriera-test-pvc
+            mountPath: "/data"
+      volumes:
+      - name: nriera-test-pvc
+        persistentVolumeClaim:
+          claimName: nriera-test-pvc

@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nrieratestflask
+  labels:
+    app: nrieratestflask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nrieratestflask
+  template:
+    metadata:
+      labels:
+        app: nrieratestflask
+    spec:
+      containers:
+        - name: nrieratestflask
+          imagePullPolicy: Always
+          image: niccoleriera/flask-ml-data:hw05
+          env:
+          - name: FLASK_APP
+            value: "app.py"
+          ports:
+          - name: http
+            containerPort: 5000
