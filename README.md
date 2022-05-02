@@ -1,1 +1,0 @@
-This repository contains a README file that describes what the repository contains and a directory named "homework 01" that holds three files. 2 of these files are python scripts and the other is a file that describes the contents of the Python scripts.
